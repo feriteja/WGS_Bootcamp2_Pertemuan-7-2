@@ -99,29 +99,30 @@ const updateContact = (oldName, newName, email, mobile) => {
     return;
   }
 
-  // if (newName == "" && email == "" && mobile == "") {
-  //   return console.log(
-  //     `you are trying to update ${existingContact}, but nothing changed`
-  //   );
-  // }
+  if (newName == undefined && email == undefined && mobile == undefined) {
+    return console.log(
+      `you are trying to update ${existingContact.name}, but nothing changed`
+    );
+  }
+
+  const newContact = {
+    name: newName || existingContact.name,
+    email: email || existingContact.email,
+    mobile: mobile || existingContact.mobile,
+  };
+
+  if (email === "") {
+    newContact.email = undefined;
+    console.log("Email has been deleted");
+  }
 
   const filterContact = contacts.filter((contact) => contact.name !== oldName);
 
-  console.log("first");
-  const newContact = [
-    ...filterContact,
-    {
-      name: newName || existingContact.name,
-      email: email || existingContact.email,
-      mobile: mobile || existingContact.mobile,
-    },
-  ];
-  fs.writeFileSync("data/Contact.json", JSON.stringify(newContact));
+  const newContacts = [...filterContact, newContact];
+  fs.writeFileSync("data/Contact.json", JSON.stringify(newContacts));
 
   console.log("Contact has been updated");
 };
-
-delete obj;
 
 module.exports = {
   checkContactFile,
