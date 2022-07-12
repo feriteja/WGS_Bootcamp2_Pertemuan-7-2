@@ -6,5 +6,6 @@
     "email": "feriteja@gmail.com",
     "mobile": "081223232131"
   },
-  { "name": "feriEdit2", "mobile": "09823232000" }
+  { "name": "feriEdit2", "mobile": "09823232000" },
+  { "name": "feriEdit2", "email": "email@mail.com", "mobile": "09823232000" }
 ]

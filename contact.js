@@ -99,7 +99,9 @@ const deleteContact = (name) => {
 const updateContact = (oldName, newName, email, mobile) => {
   const contacts = loadContact();
 
-  const existingContact = contacts.find((cons) => cons.name === oldName);
+  const existingContact = contacts.find(
+    (cons) => cons.name.toLowerCase() === oldName.toLowerCase()
+  );
   if (!existingContact) {
     console.log("name is not found, nothing been updated");
     return;
