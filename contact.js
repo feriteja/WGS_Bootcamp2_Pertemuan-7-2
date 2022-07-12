@@ -83,6 +83,12 @@ const showDetailContact = (name) => {
 const deleteContact = (name) => {
   const contacts = loadContact();
 
+  const existingContact = contacts.find((cons) => cons.name === oldName);
+  if (!existingContact) {
+    console.log("name is not found, nothing been deleted");
+    return;
+  }
+
   const newContact = contacts.filter((contact) => contact.name !== name);
 
   fs.writeFileSync("data/Contact.json", JSON.stringify(newContact));
